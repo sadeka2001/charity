@@ -6,7 +6,7 @@
 
 <title>Charitify || NGO/Charity/Fundraising Template</title>
 
-<link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/fronted/img/favicon.png') }}">
+<link rel="shortcut icon" type="image/x-icon" href="{{ setting('site_favicon') !=null ? asset(setting('site_favicon')):'' }}">
 
 <!-- Font Awesome Icons CSS -->
 <link rel="stylesheet" href="{{ asset('assets/fronted/css/font-awesome.min.css') }}">

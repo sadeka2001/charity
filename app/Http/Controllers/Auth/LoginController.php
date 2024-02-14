@@ -26,7 +26,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    // protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -37,45 +37,57 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-    protected function authenticated(Request $request)
-    {   
+    // protected function authenticated(Request $request)
+    // {
 
-        $input = $request->all();
+    //     $input = $request->all();
 
-            $this->validate($request, [
+    //         $this->validate($request, [
 
-            'email' => 'required|email',
+    //         'email' => 'required|email',
+    //         'password' => 'required',
 
-            'password' => 'required',
+    //     ]);
 
-        ]);
 
-     
 
-        if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
+    //     if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
 
+    //     {
+
+    //         if(Auth::user()->role_as == '1')
+    //     {
+    //         return redirect()->route('dashboard');
+    //     }
+
+    //     elseif(Auth::user()->role_as == '0') // Normal or Default User Login
+    //     {
+    //         return '/';
+    //     }
+
+    //     }
+    //     // else{
+
+    //     //     return redirect()->route('login')
+
+    //     //         ->with('error','Email-Address And Password Are Wrong.');
+
+    //     // }
+
+
+
+    // }
+
+    protected function authenticated()
+    {
+        if(Auth::user()->role_as == '1') //1 = Admin Login
         {
-
-            if (auth()->user()->role_as == '1') {
-
-                return redirect()->route('dashboard');
-
-            }else{
-
-                return redirect()->route('home');
-
-            }
-
-        }else{
-
-            return redirect()->route('login')
-
-                ->with('error','Email-Address And Password Are Wrong.');
-
+            return redirect('/dashboard')->with('status','Welcome to your dashboard');
         }
-
-          
-
+        elseif(Auth::user()->role_as == '0') // Normal or Default User Login
+        {
+            return redirect('/')->with('status','Logged in successfully');
+        }
     }
 
 }

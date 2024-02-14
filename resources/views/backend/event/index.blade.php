@@ -28,6 +28,8 @@
                                     <th>S/N</th>
                                     <th>Event </th>
                                     <th>Title</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
                                     <th>Address</th>
                                     <th>Description</th>
                                     <th>Status</th>
@@ -42,7 +44,9 @@
                                             <img src="{{ asset($event->image) }}" width="100%" alt="thumbnail">
                                         </td>
                                         <td>{{ $event->title }}</td>
-                                        <td>{{ $event->title }}</td>
+                                        <td>{{ $event->date }}</td>
+                                        <td>{{ $event->time }}</td>
+                                        <td>{{ $event->address }}</td>
                                         <td>{!! $event->description !!}</td>
                                         <td>
                                             @if ($event->deleted_at == null)

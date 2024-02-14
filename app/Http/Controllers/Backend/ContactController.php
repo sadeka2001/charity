@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -12,7 +13,8 @@ class ContactController extends Controller
      */
     public function index()
     {
-        //
+        $data['contacts'] = Contact::latest()->get();
+        return view('backend.contact.index', $data);
     }
 
     /**
@@ -28,7 +30,29 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required',
+                'phone' => 'required',
+                'message' => 'required',
+
+            ]);
+            $contact = new Contact();
+            $contact->name = $request->name;
+            $contact->email = $request->email;
+            $contact->phone = $request->phone;
+            $contact->message = $request->message;
+
+            $contact->save();
+            return redirect()->route('contact.index')
+                ->with('success', 'contact created successfully.');
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $th->getMessage()
+            ], 500);
+        }
     }
 
     /**
@@ -36,7 +60,8 @@ class ContactController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $data['contact'] = Contact::find($id);
+        return view('backend.contact.show', $data);
     }
 
     /**
@@ -44,7 +69,8 @@ class ContactController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data['contact'] = Contact::find($id);
+        return view('backend.contact.edit', $data);
     }
 
     /**
@@ -52,7 +78,22 @@ class ContactController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+            $contact = Contact::find($id);
+            $contact->name = $request->name;
+            $contact->email = $request->email;
+            $contact->phone = $request->phone;
+            $contact->message = $request->message;
+
+            $contact->save();
+            return redirect()->route('contact.index')
+                ->with('success', 'contact Updated successfully.');
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $th->getMessage()
+            ], 500);
+        }
     }
 
     /**
@@ -60,6 +101,16 @@ class ContactController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $contact = Contact::find($id);
+            $contact->delete();
+            return redirect()->route('contact.index')
+                ->with('success', 'Contact deleted successfully');
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $th->getMessage()
+            ], 500);
+        }
     }
 }

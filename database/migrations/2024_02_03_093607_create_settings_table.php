@@ -13,15 +13,8 @@ return new class extends Migration
     {
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string('address');
-            $table->string('email')->unique();
-            $table->string('phone');
-            $table->string('fb_link');
-            $table->string('youtube_link');
-            $table->string('linkedin_link');
-            $table->string('instagram_link');
-            $table->string('twitter_link');
-            $table->longText('desc');
+            $table->string('name');
+            $table->longText('value')->nullable();
             $table->timestamps();
         });
     }

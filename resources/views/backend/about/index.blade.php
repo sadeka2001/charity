@@ -29,6 +29,7 @@
                                     <th>About Image</th>
                                     <th>Title</th>
                                     <th>Description</th>
+                                    <th>Mission</th>
                                     <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
@@ -42,6 +43,7 @@
                                         </td>
                                         <td>{{ $about->title }}</td>
                                         <td>{!! $about->description !!}</td>
+                                        <td>{!! $about->mission !!}</td>
                                         <td>
                                             @if ($about->deleted_at == null)
                                                 <span class="badge bg-success">Published</span>

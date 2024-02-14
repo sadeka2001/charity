@@ -32,12 +32,12 @@ class GalleryController extends Controller
     {
         try{
             $request->validate([
-                'title' => 'required',
-                'description' => 'required',
+                'title' => 'nullable',
+                'description' => 'nullable',
                 'image' => 'required|mimes:jpg,jpeg,png,svg|max:2048',
-    
+
             ]);
-           
+
             $gallery = new Gallery();
             $gallery->title = $request->title;
             $gallery->description = $request->description;
@@ -121,6 +121,6 @@ class GalleryController extends Controller
                 'message' => $th->getMessage()
             ], 500);
         }
-       
+
     }
 }

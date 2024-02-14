@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use Illuminate\Http\Request;
 
 class BrandController extends Controller
@@ -12,7 +13,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        //
+        $data['brands'] = Brand::latest()->get();
+        return view('backend.brand.index', $data);
     }
 
     /**
@@ -20,7 +22,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.brand.create');
     }
 
     /**
@@ -28,7 +30,30 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $request->validate([
+                'link' => 'required',
+                'logo' => 'required|mimes:jpg,jpeg,png,svg|max:2048',
+
+            ]);
+            $brand = new Brand();
+            $brand->link = $request->link;
+            if ($request->hasFile('logo')) {
+                $file = $request->file('logo');
+                $file_name = time() . rand(0000, 9999) . $file->getClientOriginalName();
+                $file->move('uploads/brand/', $file_name);
+                $brand->logo = 'uploads/brand/' . $file_name;
+            }
+
+            $brand->save();
+            return redirect()->route('brand.index')
+                ->with('success', 'brand created successfully.');
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $th->getMessage()
+            ], 500);
+        }
     }
 
     /**
@@ -44,7 +69,8 @@ class BrandController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data['brand'] = Brand::find($id);
+        return view('backend.brand.edit', $data);
     }
 
     /**
@@ -52,7 +78,29 @@ class BrandController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        try {
+           
+            $brand =Brand::find($id);
+            $brand->link = $request->link;
+            if ($request->hasFile('logo')) {
+                $file = $request->file('logo');
+                $file_name = time() . rand(0000, 9999) . $file->getClientOriginalName();
+                $file->move('uploads/brand/', $file_name);
+                if ($brand->logo != null) {
+                    unlink($brand->logo);
+                }
+                $brand->logo = 'uploads/brand/' . $file_name;
+            }
+
+            $brand->save();
+            return redirect()->route('brand.index')
+                ->with('success', 'brand created successfully.');
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $th->getMessage()
+            ], 500);
+        }
     }
 
     /**
@@ -60,6 +108,16 @@ class BrandController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $brand = Brand::find($id);
+            $brand->delete();
+            return redirect()->route('brand.index')
+                ->with('success', 'brand deleted successfully');
+        } catch (\Throwable $th) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $th->getMessage()
+            ], 500);
+        }
     }
 }

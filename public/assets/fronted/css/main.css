@@ -2047,3 +2047,10 @@ span.date{
     background-color: #ffb451;
     color: #fff;
 }
+
+/* home page --- sponsor-section */
+.sponsor-banner{
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+}

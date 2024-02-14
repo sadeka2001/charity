@@ -37,6 +37,27 @@
                                                 </span>
                                             @enderror
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="date">Event Date <strong class="text-danger">*</strong></label>
+                                            <input type="date" name="date" id="date" class="form-control"
+                                                required>
+                                            @error('date')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="time">Event Time <strong class="text-danger">*</strong></label>
+                                            <input type="time" name="time" id="time" class="form-control"
+                                                required>
+                                            @error('time')
+                                                <span class="text-danger" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
                                         <div class="form-group">
                                             <label for="address">Event address <strong class="text-danger">*</strong></label>
                                             <input type="text" name="address" id="address" class="form-control"

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('designation')->unique();
+            $table->string('designation');
             $table->string('image');
             $table->longText('description');
             $table->timestamps();

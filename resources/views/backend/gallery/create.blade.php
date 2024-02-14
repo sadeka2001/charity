@@ -28,9 +28,9 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="title">gallery Title <strong class="text-danger">*</strong></label>
-                                            <input type="text" name="title" id="title" class="form-control"
-                                                required>
+                                            <label for="title">gallery Title <strong
+                                                    class="text-danger">*</strong></label>
+                                            <input type="text" name="title" id="title" class="form-control">
                                             @error('title')
                                                 <span class="text-danger" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -41,7 +41,7 @@
                                         <div class="form-group">
                                             <label for="description">Description <strong
                                                     class="text-danger">*</strong></label>
-                                            <textarea name="description" id="description" rows="10" class="form-control editor" required>{{ old('description') }}</textarea>
+                                            <textarea name="description" id="description" rows="10" class="form-control editor">{{ old('description') }}</textarea>
                                             @error('description')
                                                 <span class="text-danger" role="alert">
                                                     <strong>{{ $message }}</strong>

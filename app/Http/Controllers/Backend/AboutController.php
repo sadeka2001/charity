@@ -34,13 +34,15 @@ class AboutController extends Controller
             $request->validate([
                 'title' => 'required',
                 'description' => 'required',
+                'mission' => 'required',
                 'image' => 'required|mimes:jpg,jpeg,png,svg|max:2048',
-    
+
             ]);
-           
+
             $about = new About();
             $about->title = $request->title;
             $about->description = $request->description;
+            $about->mission = $request->mission;
             if ($request->hasFile('image')) {
                 $file = $request->file('image');
                 $file_name = time() . rand(0000, 9999) . $file->getClientOriginalName();
@@ -57,7 +59,7 @@ class AboutController extends Controller
                 'message' => $th->getMessage()
             ], 500);
         }
-      
+
     }
 
     /**
@@ -86,6 +88,7 @@ class AboutController extends Controller
             $about = About::find($id);
             $about->title = $request->title;
             $about->description = $request->description;
+            $about->mission = $request->mission;
             if ($request->hasFile('image')) {
                 $file = $request->file('image');
                 $file_name = time().rand(0000,9999).$file->getClientOriginalName();
@@ -105,7 +108,7 @@ class AboutController extends Controller
                 'message' => $th->getMessage()
             ], 500);
         }
-      
+
     }
 
     /**
@@ -125,6 +128,6 @@ class AboutController extends Controller
                 'message' => $th->getMessage()
             ], 500);
         }
-        
+
     }
 }

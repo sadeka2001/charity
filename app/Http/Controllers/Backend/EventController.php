@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use App\Http\Controllers\Controller;
 
 class EventController extends Controller
 {
@@ -33,6 +34,8 @@ class EventController extends Controller
         try {
             $request->validate([
                 'title' => 'required',
+                'date' => 'required',
+                'time'=> 'required',
                 'address' => 'required',
                 'description' => 'required',
                 'image' => 'required|mimes:jpg,jpeg,png,svg|max:2048',
@@ -41,6 +44,8 @@ class EventController extends Controller
 
             $event = new Event();
             $event->title = $request->title;
+            $event->date = Carbon::parse($request->date)->format('Y-m-d');
+            $event->time = Carbon::parse($request->time)->format('h:i:s A');
             $event->address = $request->address;
             $event->description = $request->description;
             if ($request->hasFile('image')) {
@@ -52,7 +57,7 @@ class EventController extends Controller
             $event->save();
             return redirect()->route('event.index')
                 ->with('success', 'event created successfully.');
-        } 
+        }
         catch (\Throwable $th) {
             return response()->json([
                 'status' => 'error',
@@ -88,6 +93,8 @@ class EventController extends Controller
 
             $event = Event::find($id);
             $event->title = $request->title;
+            $event->date = Carbon::parse($request->date)->format('Y-m-d');
+            $event->time = Carbon::parse($request->time)->format('h:i:s A');
             $event->address = $request->address;
             $event->description = $request->description;
             if ($request->hasFile('image')) {
@@ -102,7 +109,7 @@ class EventController extends Controller
             $event->save();
             return redirect()->route('event.index')
                 ->with('success', 'event created successfully.');
-        } 
+        }
         catch (\Throwable $th) {
             return response()->json([
                 'status' => 'error',
@@ -122,7 +129,7 @@ class EventController extends Controller
             $event->delete();
             return redirect()->route('event.index')
                 ->with('success', 'Event deleted successfully');
-        } 
+        }
         catch (\Throwable $th) {
             return response()->json([
                 'status' => 'error',
