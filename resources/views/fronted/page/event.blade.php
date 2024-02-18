@@ -20,7 +20,7 @@
                     @forelse ($events as $event)
                     <div class="events-item">
                         <div class="event-thumb">
-                            <img src="{{ asset($event->image) }}" alt="events">
+                            <img src="{{ asset($event->image) }}" alt="events" style='height: 100%; width: 100%; object-fit: fill;'>
                         </div>
                         <div class="event-details">
                             <h3>{{ $event->title }}</h3>

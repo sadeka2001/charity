@@ -31,7 +31,8 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="title">gallery Title <strong class="text-danger">*</strong></label>
+                                            <label for="title">gallery Title <strong
+                                                    class="text-danger">*</strong></label>
                                             <input type="text" name="title" id="title"
                                                 value="{{ $gallery->title ?? old('title') }}" class="form-control" required>
                                             @error('title')

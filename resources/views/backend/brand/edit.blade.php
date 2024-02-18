@@ -51,27 +51,27 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                        
+
 
                                     </div>
                                 </div>
                             </div>{{-- //.col-md-8 --}}
 
-                                        
 
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
-                        <div class="form-group text-center mt-3">
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fa fa-arrow-circle-o-up"></i> Update
-                            </button>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
+        <div class="form-group text-center mt-3">
+            <button type="submit" class="btn btn-primary">
+                <i class="fa fa-arrow-circle-o-up"></i> Update
+            </button>
+        </div>
+        </form>
+    </div>
+    </div>
+    </div>
     </div>
 @endsection
 @push('css')

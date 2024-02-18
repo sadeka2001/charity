@@ -18,6 +18,10 @@ class LoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
+    public function showLoginForm()
+     {
+         return view('auth.login');
+     }
 
     use AuthenticatesUsers;
 
@@ -33,60 +37,23 @@ class LoginController extends Controller
      *
      * @return void
      */
+
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
     }
-    // protected function authenticated(Request $request)
-    // {
-
-    //     $input = $request->all();
-
-    //         $this->validate($request, [
-
-    //         'email' => 'required|email',
-    //         'password' => 'required',
-
-    //     ]);
-
-
-
-    //     if(auth()->attempt(array('email' => $input['email'], 'password' => $input['password'])))
-
-    //     {
-
-    //         if(Auth::user()->role_as == '1')
-    //     {
-    //         return redirect()->route('dashboard');
-    //     }
-
-    //     elseif(Auth::user()->role_as == '0') // Normal or Default User Login
-    //     {
-    //         return '/';
-    //     }
-
-    //     }
-    //     // else{
-
-    //     //     return redirect()->route('login')
-
-    //     //         ->with('error','Email-Address And Password Are Wrong.');
-
-    //     // }
-
-
-
-    // }
+  
 
     protected function authenticated()
     {
         if(Auth::user()->role_as == '1') //1 = Admin Login
         {
-            return redirect('/dashboard')->with('status','Welcome to your dashboard');
+            return redirect('dashboard')->with('status','Welcome to your dashboard');
         }
         elseif(Auth::user()->role_as == '0') // Normal or Default User Login
         {
-            return redirect('/')->with('status','Logged in successfully');
+            return redirect('home')->with('status','you are not admin');
         }
     }
 

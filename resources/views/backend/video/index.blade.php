@@ -45,7 +45,7 @@
                                             <source src="{{$video->link}}" type="video/ogg">
                                             Your browser does not support the video tag.link
                                           </video></td> --}}
-                                          <td>{{$video->link}}</td>
+                                        <td>{{ $video->link }}</td>
                                         <td>{{ $video->title }}</td>
                                         <td>{!! $video->description !!}</td>
                                         <td>{{ $video->goal }}</td>

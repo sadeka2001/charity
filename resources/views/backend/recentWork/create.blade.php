@@ -24,11 +24,12 @@
                             <div class="col-md-8">
                                 <div class="card">
                                     <div class="card-header bg-gradient-info text-white">
-                                        <h5 class="card-title">Add New  </h5>
+                                        <h5 class="card-title">Add New </h5>
                                     </div>
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="title">Recent work Title <strong class="text-danger">*</strong></label>
+                                            <label for="title">Recent work Title <strong
+                                                    class="text-danger">*</strong></label>
                                             <input type="text" name="title" id="title" class="form-control"
                                                 required>
                                             @error('title')
@@ -38,9 +39,9 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="address">Work address <strong class="text-danger">*</strong></label>
-                                            <input type="text" name="address" id="address" class="form-control"
-                                                >
+                                            <label for="address">Work address <strong
+                                                    class="text-danger">*</strong></label>
+                                            <input type="text" name="address" id="address" class="form-control">
                                             @error('address')
                                                 <span class="text-danger" role="alert">
                                                     <strong>{{ $message }}</strong>

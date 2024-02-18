@@ -43,8 +43,8 @@
 
                                         <div class="form-group">
                                             <label for="date">Event Date <strong class="text-danger">*</strong></label>
-                                            <input type="date" name="date" id="date" value="{{ $event->date ?? old('date') }}" class="form-control"
-                                                required>
+                                            <input type="date" name="date" id="date"
+                                                value="{{ $event->date ?? old('date') }}" class="form-control" required>
                                             @error('date')
                                                 <span class="text-danger" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -53,8 +53,8 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="time">Event Time <strong class="text-danger">*</strong></label>
-                                            <input type="time" name="time" id="time" value="{{ $event->time ?? old('time') }}" class="form-control"
-                                                required>
+                                            <input type="time" name="time" id="time"
+                                                value="{{ $event->time ?? old('time') }}" class="form-control" required>
                                             @error('time')
                                                 <span class="text-danger" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -62,9 +62,11 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="address">Event address <strong class="text-danger">*</strong></label>
+                                            <label for="address">Event address <strong
+                                                    class="text-danger">*</strong></label>
                                             <input type="text" name="address" id="address"
-                                                value="{{ $event->address ?? old('address') }}" class="form-control" required>
+                                                value="{{ $event->address ?? old('address') }}" class="form-control"
+                                                required>
                                             @error('address')
                                                 <span class="text-danger" role="alert">
                                                     <strong>{{ $message }}</strong>

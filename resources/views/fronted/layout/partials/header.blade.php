@@ -34,7 +34,7 @@
 
                     </li>
                     <li><a href="{{ route('about') }}">About</a></li>
-                    <li><a href="{{ route('cause') }}">Service</a></li>
+                    <li><a href="{{ route('service') }}">Service</a></li>
                     <li><a href="{{ route('event') }}">Event</a></li>
                     <li><a href="#">Pages</a>
                         <ul>
@@ -44,7 +44,7 @@
                         </ul>
                     </li>
 
-                    <li> <a href="{{ route('contact.show') }}">Contact</a></li>
+                    <li> <a href="{{ route('contact') }}">Contact</a></li>
                 </ul>
                 <a href="#" class="default-btn">Donet Now</a>
            </div>

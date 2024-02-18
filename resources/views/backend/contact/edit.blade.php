@@ -19,8 +19,7 @@
         <div class="ibox rounded">
             <div class="ibox-body">
                 <div id="row">
-                    <form method="post" action="{{ route('contact.update', $contact->id) }}"
-                        autocomplete="off">
+                    <form method="post" action="{{ route('contact.update', $contact->id) }}" autocomplete="off">
                         @csrf
                         @method('put')
                         <div class="row justify-content-center">
@@ -63,8 +62,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="message">Message <strong
-                                                    class="text-danger">*</strong></label>
+                                            <label for="message">Message <strong class="text-danger">*</strong></label>
                                             <textarea name="message" id="message" rows="10" class="form-control editor" required>{{ $contact->message ?? old('message') }}</textarea>
                                             @error('message')
                                                 <span class="text-danger" role="alert">
@@ -77,7 +75,7 @@
                                 </div>
                             </div>{{-- //.col-md-8 --}}
 
-                           
+
                         </div>
                         <div class="form-group text-center mt-3">
                             <button type="submit" class="btn btn-primary">

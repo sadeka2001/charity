@@ -59,7 +59,8 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="address">Event address <strong class="text-danger">*</strong></label>
+                                            <label for="address">Event address <strong
+                                                    class="text-danger">*</strong></label>
                                             <input type="text" name="address" id="address" class="form-control"
                                                 required>
                                             @error('address')

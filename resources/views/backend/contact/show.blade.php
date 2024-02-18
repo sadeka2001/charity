@@ -17,8 +17,8 @@
         <div class="card-body">
             <div class="layout-content">
 
-            {{--<button class="btn btn-primary float-right" onclick="window.print()">Print</button>--}}
-            <!-- Content -->
+                {{-- <button class="btn btn-primary float-right" onclick="window.print()">Print</button> --}}
+                <!-- Content -->
                 <div class="container flex-grow-1 container-p-y" id="section-to-print">
                     <!-- Header -->
                     <div class="container-m-nx container-m-ny theme-bg-white mb-4">
@@ -32,30 +32,30 @@
 
                     <table style="width: 100%;" class="table table-hover table-striped table-bordered dataTable dtr-inline">
                         <thead>
-                        <tr role="row">
-                            <th>Key</th>
-                            <th>Value</th>
-                        </tr>
+                            <tr role="row">
+                                <th>Key</th>
+                                <th>Value</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>Name</td>
-                            <td>{{ $contact->name }}</td>
-                        </tr>
-                        <tr>
-                            <td>Email</td>
-                            <td>{{ $contact->phone }}</td>
+                            <tr>
+                                <td>Name</td>
+                                <td>{{ $contact->name }}</td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td>{{ $contact->phone }}</td>
 
-                        </tr>
-                        <tr>
-                            <td>Phone</td>
-                            <td>{{ $contact->phone }}</td>
-                        </tr>
-                        
-                        <tr>
-                            <td>Message</td>
-                            <td>{{ $contact->message }}</td>
-                        </tr>
+                            </tr>
+                            <tr>
+                                <td>Phone</td>
+                                <td>{{ $contact->phone }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Message</td>
+                                <td>{{ $contact->message }}</td>
+                            </tr>
 
                         </tbody>
                     </table>

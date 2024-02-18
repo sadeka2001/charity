@@ -53,9 +53,8 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="mission">Mission <strong
-                                                    class="text-danger">*</strong></label>
-                                            <textarea name="mission" id="mission" rows="10" class="form-control editor" required>{{  $about->mission ??old('mission') }}</textarea>
+                                            <label for="mission">Mission <strong class="text-danger">*</strong></label>
+                                            <textarea name="mission" id="mission" rows="10" class="form-control editor" required>{{ $about->mission ?? old('mission') }}</textarea>
                                             @error('mission')
                                                 <span class="text-danger" role="alert">
                                                     <strong>{{ $message }}</strong>

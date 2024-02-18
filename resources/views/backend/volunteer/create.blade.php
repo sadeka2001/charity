@@ -61,8 +61,8 @@
                                         <div class="form-group">
                                             <label for="designation">Designation <strong
                                                     class="text-danger">*</strong></label>
-                                                    <input type="text" name="designation" id="designation" class="form-control"
-                                                    required>
+                                            <input type="text" name="designation" id="designation" class="form-control"
+                                                required>
                                             @error('designation')
                                                 <span class="text-danger" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -81,7 +81,7 @@
                                             @enderror
                                         </div>
 
-                                        
+
 
                                     </div>
                                 </div>

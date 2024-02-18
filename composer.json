@@ -28,7 +28,10 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files":[
-            "app/Helpers/SettingHelper.php"
+            "app/Helpers/SettingHelper.php",
+            "app/Helpers/EventHelper.php",
+            "app/Helpers/ServiceHelper.php",
+            "app/Helpers/RecentNewsHelper.php"
         ]
     },
 

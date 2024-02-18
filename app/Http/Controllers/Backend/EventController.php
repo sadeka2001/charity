@@ -45,7 +45,7 @@ class EventController extends Controller
             $event = new Event();
             $event->title = $request->title;
             $event->date = Carbon::parse($request->date)->format('Y-m-d');
-            $event->time = Carbon::parse($request->time)->format('h:i:s A');
+            $event->time = Carbon::parse($request->time)->format('h:i:A');
             $event->address = $request->address;
             $event->description = $request->description;
             if ($request->hasFile('image')) {
@@ -94,7 +94,7 @@ class EventController extends Controller
             $event = Event::find($id);
             $event->title = $request->title;
             $event->date = Carbon::parse($request->date)->format('Y-m-d');
-            $event->time = Carbon::parse($request->time)->format('h:i:s A');
+            $event->time = Carbon::parse($request->time)->format('h:i:A');
             $event->address = $request->address;
             $event->description = $request->description;
             if ($request->hasFile('image')) {

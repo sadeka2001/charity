@@ -80,7 +80,7 @@ class VideoController extends Controller
     {
         try{
             $video = Video::find($id);
-            $$video->title = $request->title;
+            $video->title = $request->title;
             $video->goal = $request->goal;
             $video->link = $request->link;
             $video->description = $request->description;

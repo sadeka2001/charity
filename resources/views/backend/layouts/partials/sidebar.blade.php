@@ -27,18 +27,6 @@
                 </a>
             </li>
 
-            {{-- <li class="{{ Request::is('admin/gallery*') ? 'active' : '' }}">
-                <a href="{{ route('gallery.index') }}"><i class="sidebar-item-icon fa fa-photo"></i>
-                    <span class="nav-label">Gallery</span><i class="fa fa-angle-left arrow"></i>
-                </a>
-
-                <ul class="nav-2-level {{ isset($gallerytNav) ? 'collapse in' : 'collapse' }}">
-
-                            <a class="{{ Request::is('admin/gallery-video*')?'active':'' }}" href="{{ route('admin.gallery.video.index') }}">Video Gallery</a>
-                        </li>
-
-                </ul>
-            </li> --}}
 
             <li class="{{ Request::is('admin/gallery*') ? 'active' : '' }}">
                 <a href="{{ route('gallery.index') }}"><i class="sidebar-item-icon fas fa-photo"></i>
@@ -46,6 +34,11 @@
                 </a>
             </li>
 
+            <li class="{{ Request::is('admin/video*') ? 'active' : '' }}">
+                <a href="{{ route('video.index') }}"><i class="sidebar-item-icon fas fa-photo"></i>
+                    <span class="nav-label">Video</span>
+                </a>
+            </li>
             <li class="{{ Request::is('admin/event*') ? 'active' : '' }}">
                 <a href="{{ route('event.index') }}"><i class="sidebar-item-icon fa fa-sticky-note"></i>
                     <span class="nav-label">Event</span>
@@ -56,8 +49,8 @@
                     <span class="nav-label">Recent News</span>
                 </a>
             </li>
-            <li class="{{ Request::is('admin/cause*') ? 'active' : '' }}">
-                <a href="{{ route('cause.index') }}"><i class="sidebar-item-icon fas fa-photo"></i>
+            <li class="{{ Request::is('admin/service*') ? 'active' : '' }}">
+                <a href="{{ route('service.index') }}"><i class="sidebar-item-icon fas fa-photo"></i>
                     <span class="nav-label">Services</span>
                 </a>
             </li>

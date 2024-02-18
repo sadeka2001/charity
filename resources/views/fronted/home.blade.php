@@ -32,40 +32,6 @@
     </section><!-- /#slider-Section -->
 
 
-
-    {{-- <section class="promo-section bd-bottom">
-        <div class="promo-wrap">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-4 col-sm-6 xs-padding">
-                        <div class="promo-content">
-                            <img src="{{ asset('assets/fronted/img/icon-1.png') }}" alt="prmo icon">
-                            <h3>Make Donetion</h3>
-                            <p>Help today because tomorrow you may be the one who needs helping!</p>
-                            <a href="#">Read More</a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 xs-padding">
-                        <div class="promo-content">
-                            <img src="{{ asset('assets/fronted/img/icon-2.png') }}" alt="prmo icon">
-                            <h3>Fundrising</h3>
-                            <p>Help today because tomorrow you may be the one who needs helping! </p>
-                            <a href="#">Read More</a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 xs-padding">
-                        <div class="promo-content">
-                            <img src="{{ asset('assets/fronted/img/icon-3.png') }}" alt="prmo icon">
-                            <h3>Become A Volunteer</h3>
-                            <p>Help today because tomorrow you may be the one who needs helping! </p>
-                            <a href="#">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section><!-- /Promo Section --> --}}
-
     <section class="causes-section bg-grey bd-bottom padding">
         <div class="container">
 
@@ -75,11 +41,11 @@
                 <p>Help today because tomorrow you may be the one who <br> needs more helping!</p>
             </div><!-- /Section Heading -->
             <div class="causes-wrap row">
-                @forelse($causes as $cause)
+                @forelse($services as $service)
                     <div class="col-md-4 xs-padding">
                         <div class="causes-content">
                             <div class="causes-thumb">
-                                <img src="{{ asset($cause->image) }}" alt="causes">
+                                <img src="{{ asset($service->image) }}" alt="causes">
                                 <a href="#" class="donate-btn">Donate Now<i class="ti-plus"></i></a>
                                 <div class="progress">
                                     <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
@@ -88,13 +54,13 @@
                                 </div>
                             </div>
                             <div class="causes-details">
-                                <h3>{{ $cause->title }}</h3>
-                                <p> {!! Str::limit(strip_tags($cause->description), 80) !!}</p>
+                                <h3>{{ $service->title }}</h3>
+                                <p> {!! Str::limit(strip_tags($service->description), 80) !!}</p>
                                 <div class="donation-box">
-                                    <p><i class="ti-bar-chart"></i>Goal: {{ $cause->goal }}</p>
+                                    <p><i class="ti-bar-chart"></i>Goal: {{ $service->goal }}</p>
                                     <p><i class="ti-thumb-up"></i>Raised: $5000</p>
                                 </div>
-                                <a href="{{ route('cause.details', $cause->id) }}" class="read-more">Read More</a>
+                                <a href="{{ route('service.details', $service->id) }}" class="read-more">Read More</a>
                             </div>
                         </div>
 
@@ -109,28 +75,20 @@
     <section class="about-section bd-bottom shape circle padding">
         <div class="container">
             <div class="row">
-                {{-- <div class="col-md-4 xs-padding">
-                    <div class="profile-wrap">
-                        <img class="profile" src="{{ asset('assets/fronted/img/profile.jpg') }}" alt="profile">
-                        <h3>Jonathan Smith <span>CEO & Founder of Charitify.</span></h3>
-                        <p>The secret to happiness lies in helping others. Never underestimate the difference YOU can make
-                            in the lives of the poor, the abused and the helpless.</p>
-                        <img src="{{ asset('assets/fronted/img/sign.png') }}" alt="sign">
-                    </div>
-                </div> --}}
+
                 <div class="col-md-12 xs-padding">
                     <div class="about-wrap row">
                         <div class="col-md-6 xs-padding">
-                            <img src="{{asset($about->image)}}" alt="about-thumb">
+                            <img src="{{ asset($about->image) }}" alt="about-thumb">
                             <h3>About Us</h3>
-                            <p>{!!Str::limit(strip_tags($about->description),150)!!}</p>
-                            <a href="{{route('about')}}" class="default-btn">Read More</a>
+                            <p>{!! Str::limit(strip_tags($about->description), 150) !!}</p>
+                            <a href="{{ route('about') }}" class="default-btn">Read More</a>
                         </div>
                         <div class="col-md-6 xs-padding">
                             <img src="{{ asset('assets/fronted/img/mission.jpg') }}" alt="about-thumb">
                             <h3>Our History</h3>
-                            <p>{!!Str::limit(strip_tags($about->mission),150)!!}</p>
-                            <a href="{{route('about')}}" class="default-btn">Read More</a>
+                            <p>{!! Str::limit(strip_tags($about->mission), 150) !!}</p>
+                            <a href="{{ route('about') }}" class="default-btn">Read More</a>
                         </div>
                     </div>
                 </div>
@@ -144,7 +102,7 @@
                 <div class="col-md-6 xs-padding">
                     <div class="campaigns-wrap">
                         <h4>Featured Campaigns</h4>
-                        <h2>{{$video->title}}</h2>
+                        <h2>{{ $video->title }}</h2>
                         <p>{!! $video->description !!}</p>
                         <div class="progress">
                             <div class="progress-bar" role="progressbar" style="width: 35%;" aria-valuenow="25"
@@ -152,7 +110,7 @@
                             </div>
                         </div>
                         <div class="donation-box">
-                            <h3><i class="ti-bar-chart"></i>Goal: {{$video->goal}}</h3>
+                            <h3><i class="ti-bar-chart"></i>Goal: {{ $video->goal }}</h3>
                             <h3><i class="ti-thumb-up"></i>Raised: $55000</h3>
                         </div>
                         <a href="#" class="default-btn">Donate Now</a>
@@ -162,8 +120,8 @@
                     <div class="video-wrap">
                         <img src="{{ asset('assets/fronted/img/video.jpg') }}" alt="video">
                         <div class="play">
-                            <a class="img-popup" data-autoplay="true" data-vbtype="video"
-                                href="{{$video->link}}"><i class="ti-control-play"></i></a>
+                            <a class="img-popup" data-autoplay="true" data-vbtype="video" href="{{ $video->link }}"><i
+                                    class="ti-control-play"></i></a>
                         </div>
                     </div>
                 </div>
@@ -269,13 +227,14 @@
                     <div class="events-item">
 
                         <div class="event-thumb">
-                            <img src="{{ asset($event->image) }}" alt="events">
+                            <img src="{{ asset($event->image) }}" alt="events" style='height: 100%; width: 100%; object-fit: fill;'>
                         </div>
                         <div class="event-details">
                             <h3>{{ $event->title }}</h3>
                             <div class="event-info">
                                 <p><i class="ti-calendar"></i><time datetime="January 01,2018"
-                                        class="post_date">{{ \Carbon\Carbon::parse($event->date)->format('M d, Y') }} & {{ \Carbon\Carbon::parse($event->time)->format('h:i:s A') }}</time>
+                                        class="post_date">{{ \Carbon\Carbon::parse($event->date)->format('M d, Y') }} &
+                                        {{ \Carbon\Carbon::parse($event->time)->format('h:i:A') }}</time>
                                 </p>
 
                                 <p><i class="ti-location-pin"></i>{{ $event->address }}</p>
@@ -285,9 +244,9 @@
                         </div>
 
                     </div>
+
                 @empty
                 @endforelse
-
 
             </div>
         </div>
@@ -329,9 +288,11 @@
                         @forelse($recent_works as $recent_work)
                             <div class="col-md-4 padding-15">
                                 <div class="blog-post">
-                                    <img src="{{ asset($recent_work->image) }}" alt="blog post">
+                                    <img src="{{ asset($recent_work->image) }}" alt="blog post" height="300"
+                                        width="300">
                                     <div class="blog-content">
-                                        <span class="date"><i class="fa fa-clock-o"></i> January 01.2021</span>
+                                        <span class="date"><i class="fa fa-clock-o"></i>
+                                            {{ $recent_work->created_at }}</span>
                                         <h3><a href="#">{{ $recent_work->title }}</a></h3>
                                         <p>{!! str::limit(strip_tags($recent_work->description), 80) !!}</p>
                                         <a href="{{ route('recent.work.details', $recent_work->id) }}"

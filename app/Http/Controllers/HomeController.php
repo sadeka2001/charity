@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 use App\Models\About;
 use App\Models\Brand;
-use App\Models\Cause;
+
 use App\Models\Event;
 use App\Models\Video;
 use App\Models\Slider;
 use App\Models\Contact;
 use App\Models\Gallery;
+use App\Models\Service;
 use App\Models\Volunteer;
 use App\Models\RecentWork;
 use App\Models\Certificate;
@@ -40,7 +41,7 @@ class HomeController extends Controller
     public function front(){
         $data['sliders']=Slider::latest()->get();
         $data['about']=About::first();
-        $data['causes']=Cause::limit(3)->latest()->get();
+        $data['services']=Service::limit(3)->latest()->get();
         $data['brands']=Brand::get();
         $data['video']=Video::first();
         $data['volunteers']=Volunteer::latest()->limit(4)->get();
@@ -87,16 +88,16 @@ class HomeController extends Controller
         $data['teams']=Volunteer::latest('id')->get();
        return view('fronted.page.team',$data);
     }
-    public function cause()
+    public function service()
     {
-       $data['causes']=Cause::latest('id')->get();
-       return view('fronted.page.causes',$data);
+       $data['services']=Service::latest('id')->get();
+       return view('fronted.page.service',$data);
     }
 
-    public function cause_details($id)
+    public function service_details($id)
     {
-        $data['cause_detail']=Cause::findOrFail($id);
-        return view('fronted.page.cause_details',$data);
+        $data['service_detail']=Service::findOrFail($id);
+        return view('fronted.page.service_details',$data);
     }
 
     public function contact_show()
@@ -107,10 +108,12 @@ class HomeController extends Controller
 
     public function contact_store(Request $request)
     {
+
+
         $this->validate($request, [
             'name' => 'required',
             'phone' => 'required',
-            'email' => 'nullable|email',
+            'email' => 'required|email',
             'message' => 'required|max:2000',
 
         ]);
@@ -121,6 +124,6 @@ class HomeController extends Controller
         $message->email = $request->email;
         $message->message = $request->message;
         $message->save();
-        return redirect()->with('success', 'message created successfully.');
+        return redirect('/')->with('success', 'message created successfully.');
     }
 }

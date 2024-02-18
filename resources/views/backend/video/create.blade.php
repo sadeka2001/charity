@@ -28,8 +28,7 @@
                                     </div>
                                     <div class="card-body">
                                         <div class="form-group">
-                                            <label for="title">Video Title <strong
-                                                    class="text-danger">*</strong></label>
+                                            <label for="title">Video Title <strong class="text-danger">*</strong></label>
                                             <input type="text" name="title" id="title" class="form-control">
                                             @error('title')
                                                 <span class="text-danger" role="alert">
@@ -38,8 +37,7 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="goal">Video Goal <strong
-                                                    class="text-danger">*</strong></label>
+                                            <label for="goal">Video Goal <strong class="text-danger">*</strong></label>
                                             <input type="text" name="goal" id="goal" class="form-control">
                                             @error('goal')
                                                 <span class="text-danger" role="alert">
@@ -48,8 +46,7 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="link">Video Link <strong
-                                                    class="text-danger">*</strong></label>
+                                            <label for="link">Video Link <strong class="text-danger">*</strong></label>
                                             <input type="text" name="link" id="link" class="form-control">
                                             @error('link')
                                                 <span class="text-danger" role="alert">
@@ -74,7 +71,7 @@
                                     </div>
                                 </div>
                             </div>{{-- //.col-md-8 --}}
-                           
+
                         </div>
                         <div class="form-group text-center mt-3">
                             <button type="submit" class="btn btn-primary">

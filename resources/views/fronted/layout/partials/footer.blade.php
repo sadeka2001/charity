@@ -18,10 +18,12 @@
                 <div class="widget-content">
                     <h3>Recent Campaigns</h3>
                     <ul class="widget-link">
-                        <li><a href="#">First charity activity of this summer. <span>-1 Year Ago</span></a></li>
-                        <li><a href="#">Big charity: build school for poor children. <span>-2 Year Ago</span></a></li>
-                        <li><a href="#">Clean-water system for rural poor. <span>-2 Year Ago</span></a></li>
-                        <li><a href="#">Nepal earthqueak donation campaigns. <span>-3 Year Ago</span></a></li>
+                        @forelse (getEvents() as $event)
+                        <li><a href="{{ route('event.details', $event->id) }}">{{ $event->title }}
+                                <span>-{{ $event->created_at->diffForHumans() }}</span></a></li>
+                    @empty
+                        <li>No Campaigns yet!</li>
+                    @endforelse
                     </ul>
                 </div>
             </div>

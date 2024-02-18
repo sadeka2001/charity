@@ -9,7 +9,8 @@
                 <h1 class="page-title">{{ $pageTitle ?? '' }}</h1>
             </div>
             <div class="col-sm-6 pt-4 text-right">
-                <a href="{{ route('volunteer.create') }}" class="btn bg-primary text-white"><i class="fa fa-plus-circle"></i> Add
+                <a href="{{ route('volunteer.create') }}" class="btn bg-primary text-white"><i class="fa fa-plus-circle"></i>
+                    Add
                     New</a>
 
             </div>

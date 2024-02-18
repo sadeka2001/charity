@@ -9,7 +9,7 @@
                 <h1 class="page-title">{{ $pageTitle ?? '' }}</h1>
             </div>
             <div class="col-sm-6 pt-4 text-right">
-                <a href="{{ route('cause.create') }}" class="btn bg-primary text-white"><i class="fa fa-plus-circle"></i> Add
+                <a href="{{ route('service.create') }}" class="btn bg-primary text-white"><i class="fa fa-plus-circle"></i> Add
                     New</a>
 
             </div>
@@ -35,17 +35,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($causes as $key=>$cause)
+                                @forelse ($services as $key=>$service)
                                     <tr>
                                         <td>{{ $key + 1 }}</td>
                                         <td width="10%">
-                                            <img src="{{ asset($cause->image) }}" width="100%" alt="thumbnail">
+                                            <img src="{{ asset($service->image) }}" width="100%" alt="thumbnail">
                                         </td>
-                                        <td>{{ $cause->title }}</td>
-                                        <td>{{ $cause->goal }}</td>
-                                        <td>{!! $cause->description !!}</td>
+                                        <td>{{ $service->title }}</td>
+                                        <td>{{ $service->goal }}</td>
+                                        <td>{!! $service->description !!}</td>
                                         <td>
-                                            @if ($cause->deleted_at == null)
+                                            @if ($service->deleted_at == null)
                                                 <span class="badge bg-success">Published</span>
                                             @else
                                                 <span class="badge bg-danger">Drafted</span>
@@ -53,10 +53,10 @@
                                         </td>
 
                                         <td style="text-align: center" width="12%">
-                                            <a href="{{ route('cause.edit', $cause->id) }}"
+                                            <a href="{{ route('service.edit', $service->id) }}"
                                                 class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i></a>
-                                            <form id="delete-form-{{ $cause->id }}"
-                                                action="{{ route('cause.destroy', $cause->id) }}" method="POST"
+                                            <form id="delete-form-{{ $service->id }}"
+                                                action="{{ route('service.destroy', $service->id) }}" method="POST"
                                                 style="display: inline;">
                                                 @csrf
                                                 @method('DELETE')

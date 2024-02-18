@@ -1,27 +1,30 @@
 <?php
 
 namespace App\Http\Controllers\Backend;
-use App\Http\Controllers\Controller;
-use App\Models\Cause;
-use Illuminate\Http\Request;
 
-class ReasonController extends Controller
+use App\Models\Service;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $data['causes']=Cause::latest()->get();
-        return view('backend.cause.index',$data);
-    }
+
+        public function index()
+        {
+            $data['services']=Service::latest()->get();
+            return view('backend.service.index',$data);
+        }
+
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('backend.cause.create');
+        return view('backend.service.create');
     }
 
     /**
@@ -37,19 +40,19 @@ class ReasonController extends Controller
                 'image' => 'required|mimes:jpg,jpeg,png,svg|max:2048',
 
             ]);
-            $cause = new Cause();
-            $cause->title = $request->title;
-            $cause->goal = $request->goal;
-            $cause->description = $request->description;
+            $service = new Service();
+            $service->title = $request->title;
+            $service->goal = $request->goal;
+            $service->description = $request->description;
             if ($request->hasFile('image')) {
                 $file = $request->file('image');
                 $file_name = time() . rand(0000, 9999) . $file->getClientOriginalName();
-                $file->move('uploads/cause/', $file_name);
-                $cause->image = 'uploads/cause/' . $file_name;
+                $file->move('uploads/service/', $file_name);
+                $service->image = 'uploads/service/' . $file_name;
             }
-            $cause->save();
-            return redirect()->route('cause.index')
-                ->with('success', 'Reason created successfully.');
+            $service->save();
+            return redirect()->route('service.index')
+                ->with('success', 'Service created successfully.');
         } catch (\Throwable $th) {
             return response()->json([
                 'status' => 'error',
@@ -71,8 +74,8 @@ class ReasonController extends Controller
      */
     public function edit(string $id)
     {
-        $data['cause']=Cause::find($id);
-        return view('backend.cause.edit',$data);
+        $data['service']=Service::find($id);
+        return view('backend.service.edit',$data);
     }
 
     /**
@@ -81,22 +84,22 @@ class ReasonController extends Controller
     public function update(Request $request, string $id)
     {
         try {
-            $cause = Cause::find($id);
-            $cause->title = $request->title;
-            $cause->goal = $request->goal;
-            $cause->description = $request->description;
+            $service = Service::find($id);
+            $service->title = $request->title;
+            $service->goal = $request->goal;
+            $service->description = $request->description;
             if ($request->hasFile('image')) {
                 $file = $request->file('image');
                 $file_name = time() . rand(0000, 9999) . $file->getClientOriginalName();
-                $file->move('uploads/cause/', $file_name);
-                if ($cause->image != null) {
-                    unlink($cause->image);
+                $file->move('uploads/service/', $file_name);
+                if ($service->image != null) {
+                    unlink($service->image);
                 }
-                $cause->image = 'uploads/cause/' . $file_name;
+                $service->image = 'uploads/service/' . $file_name;
             }
-            $cause->save();
-            return redirect()->route('cause.index')
-                ->with('success', 'Reason created successfully.');
+            $service->save();
+            return redirect()->route('service.index')
+                ->with('success', 'Service created successfully.');
         } catch (\Throwable $th) {
             return response()->json([
                 'status' => 'error',
@@ -111,9 +114,9 @@ class ReasonController extends Controller
     public function destroy(string $id)
     {
         try {
-        $cause = Cause::find($id);
-        $cause->delete();
-        return redirect()->route('cause.index')
+        $service = Service::find($id);
+        $service->delete();
+        return redirect()->route('service.index')
             ->with('success', 'Reason deleted successfully');
     } catch (\Throwable $th) {
         return response()->json([

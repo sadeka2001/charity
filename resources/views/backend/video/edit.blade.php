@@ -41,9 +41,9 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="goal">Video Goal <strong
-                                                    class="text-danger">*</strong></label>
-                                            <input type="text" name="goal" id="goal" value="{{ $video->goal ?? old('goal') }}" class="form-control">
+                                            <label for="goal">Video Goal <strong class="text-danger">*</strong></label>
+                                            <input type="text" name="goal" id="goal"
+                                                value="{{ $video->goal ?? old('goal') }}" class="form-control">
                                             @error('goal')
                                                 <span class="text-danger" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -51,9 +51,9 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="link">Video Link <strong
-                                                    class="text-danger">*</strong></label>
-                                            <input type="text" name="link" id="link" value="{{ $video->link ?? old('link') }}" class="form-control">
+                                            <label for="link">Video Link <strong class="text-danger">*</strong></label>
+                                            <input type="text" name="link" id="link"
+                                                value="{{ $video->link ?? old('link') }}" class="form-control">
                                             @error('link')
                                                 <span class="text-danger" role="alert">
                                                     <strong>{{ $message }}</strong>

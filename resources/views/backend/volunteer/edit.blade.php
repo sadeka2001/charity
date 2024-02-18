@@ -17,8 +17,8 @@
         <div class="ibox rounded">
             <div class="ibox-body">
                 <div id="row">
-                    <form method="post" action="{{ route('volunteer.update',$volunteer->id) }}" enctype="multipart/form-data"
-                        autocomplete="off">
+                    <form method="post" action="{{ route('volunteer.update', $volunteer->id) }}"
+                        enctype="multipart/form-data" autocomplete="off">
                         @csrf
                         @method('put')
                         <div class="row justify-content-center">
@@ -30,8 +30,8 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="name">Name <strong class="text-danger">*</strong></label>
-                                            <input type="text" name="name" id="name" value="{{ $volunteer->name ?? old('name') }}" class="form-control"
-                                                required>
+                                            <input type="text" name="name" id="name"
+                                                value="{{ $volunteer->name ?? old('name') }}" class="form-control" required>
                                             @error('name')
                                                 <span class="text-danger" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -40,7 +40,8 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="email">Email <strong class="text-danger">*</strong></label>
-                                            <input type="text" name="email" id="email" value="{{ $volunteer->email ?? old('email') }}" class="form-control"
+                                            <input type="text" name="email" id="email"
+                                                value="{{ $volunteer->email ?? old('email') }}" class="form-control"
                                                 required>
                                             @error('email')
                                                 <span class="text-danger" role="alert">
@@ -51,7 +52,8 @@
 
                                         <div class="form-group">
                                             <label for="phone">Phone <strong class="text-danger">*</strong></label>
-                                            <input type="text" name="phone" id="phone" value="{{ $volunteer->phone ?? old('phone') }}" class="form-control"
+                                            <input type="text" name="phone" id="phone"
+                                                value="{{ $volunteer->phone ?? old('phone') }}" class="form-control"
                                                 required>
                                             @error('phone')
                                                 <span class="text-danger" role="alert">
@@ -62,8 +64,9 @@
                                         <div class="form-group">
                                             <label for="designation">Designation <strong
                                                     class="text-danger">*</strong></label>
-                                                    <input type="text" name="designation" id="designation" value="{{ $volunteer->designation ?? old('designation') }}" class="form-control"
-                                                    required>
+                                            <input type="text" name="designation" id="designation"
+                                                value="{{ $volunteer->designation ?? old('designation') }}"
+                                                class="form-control" required>
                                             @error('designation')
                                                 <span class="text-danger" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -73,7 +76,7 @@
                                         <div class="form-group">
                                             <label for="description">Description <strong
                                                     class="text-danger">*</strong></label>
-                                                    <textarea name="description" id="description" rows="10" class="form-control editor" required>{{ $volunteer->description ?? old('description') }}</textarea>
+                                            <textarea name="description" id="description" rows="10" class="form-control editor" required>{{ $volunteer->description ?? old('description') }}</textarea>
                                             @error('description')
                                                 <span class="text-danger" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -81,7 +84,7 @@
                                             @enderror
                                         </div>
 
-                                        
+
 
 
                                     </div>

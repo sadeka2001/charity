@@ -17,8 +17,8 @@
         <div class="ibox rounded">
             <div class="ibox-body">
                 <div id="row">
-                    <form method="post" action="{{ route('certified.update',$certified->id) }}" enctype="multipart/form-data"
-                        autocomplete="off">
+                    <form method="post" action="{{ route('certified.update', $certified->id) }}"
+                        enctype="multipart/form-data" autocomplete="off">
                         @csrf
                         @method('put')
                         <div class="row justify-content-center">
@@ -30,8 +30,8 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="name">Name <strong class="text-danger">*</strong></label>
-                                            <input type="text" name="name" id="name" value="{{$certified->name ?? old('name') }}" class="form-control"
-                                                required>
+                                            <input type="text" name="name" id="name"
+                                                value="{{ $certified->name ?? old('name') }}" class="form-control" required>
                                             @error('name')
                                                 <span class="text-danger" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -42,8 +42,9 @@
                                         <div class="form-group">
                                             <label for="designation">Designation <strong
                                                     class="text-danger">*</strong></label>
-                                            <input type="text" name="designation" id="designation" value="{{$certified->designation ?? old('designation') }}" class="form-control"
-                                                required>
+                                            <input type="text" name="designation" id="designation"
+                                                value="{{ $certified->designation ?? old('designation') }}"
+                                                class="form-control" required>
                                             @error('designation')
                                                 <span class="text-danger" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -72,7 +73,8 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="image">Attachmimageent</label>
-                                            <input type="file" name="image" id="image" class="form-control dropify" data-default-file="{{ isset($certified->image) ? asset($certified->image) : '' }}"
+                                            <input type="file" name="image" id="image" class="form-control dropify"
+                                                data-default-file="{{ isset($certified->image) ? asset($certified->image) : '' }}"
                                                 data-height="220">
                                             @error('image')
                                                 <span class="text-danger" role="alert">

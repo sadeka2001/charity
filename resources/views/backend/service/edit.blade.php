@@ -7,7 +7,7 @@
                 {{-- <h1 class="page-title">{{ $pageTitle??'' }}</h1> --}}
             </div>
             <div class="col-sm-6 pt-4 text-right">
-                <a href="{{ route('cause.index') }}" class="btn bg-danger text-white"><i class="fa fa-reply"></i> Back to
+                <a href="{{ route('service.index') }}" class="btn bg-danger text-white"><i class="fa fa-reply"></i> Back to
                     list</a>
 
             </div>
@@ -17,9 +17,10 @@
         <div class="ibox rounded">
             <div class="ibox-body">
                 <div id="row">
-                    <form method="post" action="{{ route('cause.store') }}" enctype="multipart/form-data"
+                    <form method="post" action="{{ route('service.update', $service->id) }}" enctype="multipart/form-data"
                         autocomplete="off">
                         @csrf
+                        @method('put')
                         <div class="row justify-content-center">
                             <div class="col-md-8">
                                 <div class="card">
@@ -29,8 +30,8 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="title">Title <strong class="text-danger">*</strong></label>
-                                            <input type="text" name="title" id="title" class="form-control"
-                                                required>
+                                            <input type="text" name="title" id="title"
+                                                value="{{ $service->title ?? old('title') }}" class="form-control" required>
                                             @error('title')
                                                 <span class="text-danger" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -39,10 +40,9 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="goal">Goal <strong
-                                                    class="text-danger">*</strong></label>
-                                            <input type="text" name="goal" id="goal" class="form-control"
-                                                required>
+                                            <label for="goal">Goal <strong class="text-danger">*</strong></label>
+                                            <input type="text" name="goal" id="goal"
+                                                value="{{ $service->goal ?? old('goal') }}" class="form-control" required>
                                             @error('goal')
                                                 <span class="text-danger" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -53,7 +53,7 @@
                                         <div class="form-group">
                                             <label for="description">Description <strong
                                                     class="text-danger">*</strong></label>
-                                            <textarea name="description" id="description" rows="10" class="form-control editor" required>{{ old('description') }}</textarea>
+                                            <textarea name="description" id="description" rows="10" class="form-control editor" required>{{ $service->description ?? old('description') }}</textarea>
                                             @error('description')
                                                 <span class="text-danger" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -72,6 +72,7 @@
                                         <div class="form-group">
                                             <label for="image">Attachmimageent</label>
                                             <input type="file" name="image" id="image" class="form-control dropify"
+                                                data-default-file="{{ isset($service->image) ? asset($service->image) : '' }}"
                                                 data-height="220">
                                             @error('image')
                                                 <span class="text-danger" role="alert">
@@ -86,7 +87,7 @@
                         </div>
                         <div class="form-group text-center mt-3">
                             <button type="submit" class="btn btn-primary">
-                                <i class="fa fa-plus-circle"></i> Create
+                                <i class="fa fa-plus-circle"></i> Update
                             </button>
                         </div>
                     </form>

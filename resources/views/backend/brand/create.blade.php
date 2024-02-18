@@ -50,20 +50,20 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    </div>
                                 </div>
                             </div>
-                        </div>{{-- //.col-md-8 --}}
+                        </div>
+                </div>{{-- //.col-md-8 --}}
 
-                </div>
-                <div class="form-group text-center mt-3">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fa fa-plus-circle"></i> Create
-                    </button>
-                </div>
-                </form>
             </div>
+            <div class="form-group text-center mt-3">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-plus-circle"></i> Create
+                </button>
+            </div>
+            </form>
         </div>
+    </div>
     </div>
     </div>
 @endsection

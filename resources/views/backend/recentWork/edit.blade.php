@@ -19,8 +19,8 @@
         <div class="ibox rounded">
             <div class="ibox-body">
                 <div id="row">
-                    <form method="post" action="{{ route('recent_work.update', $recent_work->id) }}" enctype="multipart/form-data"
-                        autocomplete="off">
+                    <form method="post" action="{{ route('recent_work.update', $recent_work->id) }}"
+                        enctype="multipart/form-data" autocomplete="off">
                         @csrf
                         @method('put')
                         <div class="row justify-content-center">
@@ -33,7 +33,8 @@
                                         <div class="form-group">
                                             <label for="title"> Title <strong class="text-danger">*</strong></label>
                                             <input type="text" name="title" id="title"
-                                                value="{{ $recent_work->title ?? old('title') }}" class="form-control" required>
+                                                value="{{ $recent_work->title ?? old('title') }}" class="form-control"
+                                                required>
                                             @error('title')
                                                 <span class="text-danger" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -41,9 +42,11 @@
                                             @enderror
                                         </div>
                                         <div class="form-group">
-                                            <label for="address">Event address <strong class="text-danger">*</strong></label>
+                                            <label for="address">Event address <strong
+                                                    class="text-danger">*</strong></label>
                                             <input type="text" name="address" id="address"
-                                                value="{{ $recent_work->address ?? old('address') }}" class="form-control" required>
+                                                value="{{ $recent_work->address ?? old('address') }}" class="form-control"
+                                                required>
                                             @error('address')
                                                 <span class="text-danger" role="alert">
                                                     <strong>{{ $message }}</strong>

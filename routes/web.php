@@ -9,26 +9,46 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\EventController;
 use App\Http\Controllers\Backend\VideoController;
-use App\Http\Controllers\Backend\ReasonController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\GalleryController;
+use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\CertifiedController;
 use App\Http\Controllers\Backend\VolunteerController;
 use App\Http\Controllers\Backend\RecentWorkController;
 
-Route::get('/', function () {
-        return view('fronted.layout.master');
-    });
 
-
-//fronted
+//fronted route
 Route::get('/', [HomeController::class, 'front']);
+Route::controller(HomeController::class)->group(function () {
+    Route::get('about', 'about')->name('about');
+    Route::get('gallery', 'gallery')->name('gallery');
+    Route::get('event', 'event')->name('event');
+    Route::get('service', 'service')->name('service');
+    Route::get('service/details/{id}', 'service_details')->name('service.details');
+    Route::get('event/details/{id}', 'event_details')->name('event.details');
+    Route::get('recent/work/details/{id}', 'recent_work_details')->name('recent.work.details');
+    Route::get('team', 'team')->name('team');
+    Route::get('contact', 'contact_show')->name('contact');
+    Route::post('contact/store', 'contact_store')->name('contact.store');
 
-// backend
-Route::get('/dashboard',[AdminController::class,'dashboard']);
-Auth::routes();
+});
+
+
+// Backend route
+Auth::routes(
+    [
+        'register' =>false,
+        'login' =>false
+    ]
+);
+
+Route::get('secure-login', [\App\Http\Controllers\Auth\LoginController::class,'showLoginForm']);
+Route::post('secure-login', [\App\Http\Controllers\Auth\LoginController::class,'login'])->name('login');
+Route::get('secure-register', [\App\Http\Controllers\Auth\RegisterController::class,'showRegistrationForm']);
+Route::post('secure-register', [\App\Http\Controllers\Auth\RegisterController::class,'register'])->name('register');
+
 
 Route::group(['middleware' => ['auth', 'isAdmin']], function () {
     Route::get('dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
@@ -39,7 +59,7 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
         Route::resource('gallery', GalleryController::class);
         Route::resource('video', VideoController::class);
         Route::resource('event', EventController::class);
-        Route::resource('cause', ReasonController::class);
+        Route::resource('service', ServiceController::class);
         Route::resource('volunteer', VolunteerController::class);
         Route::resource('brand', BrandController::class);
         Route::resource('contact', ContactController::class);
@@ -71,20 +91,6 @@ Route::group(['middleware' => ['auth', 'isAdmin']], function () {
 });
 
 
-//fronted route
-    Route::controller(HomeController::class)->group(function () {
-        Route::get('about', 'about')->name('about');
-        Route::get('gallery', 'gallery')->name('gallery');
-        Route::get('event', 'event')->name('event');
-        Route::get('cause', 'cause')->name('cause');
-        Route::get('cause/details/{id}', 'cause_details')->name('cause.details');
-        Route::get('event/details/{id}', 'event_details')->name('event.details');
-        Route::get('recent/work/details/{id}', 'recent_work_details')->name('recent.work.details');
-        Route::get('team', 'team')->name('team');
-        Route::get('contact/show', 'contact_show')->name('contact.show');
-        Route::post('contact/store', 'contact_store')->name('contact.store');
-
-});
 
 
 
